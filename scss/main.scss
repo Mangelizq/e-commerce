@@ -1,31 +1,27 @@
-// ===== MAIN STYLESHEET =====
+// ===== MAIN =====
+@use "variables" as v;
+@use "mixins";
+@use "header";
+@use "banner";
+@use "products";
+@use "cart";
+@use "sass:map";
 
-// Importar variables
-@import 'variables';
-
-// Importar mixins y placeholders
-@import 'mixins';
-
-//Estilos base globales
-* {
-  @extend %reset-box;
+// RESET
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-  @extend %full-width;
-  font-family: map-get($fonts, primary);
-  font-size: map-get($fonts, size-base);
-  font-weight: map-get($fonts, weight-light);
-  color: map-get($colors, secondary);
+  font-family: "Inter", Arial, sans-serif;
+  background-color: map.get(v.$colors, secondary);
+  color: map.get(v.$colors, primary);
 }
 
 img {
   @extend %image-responsive;
 }
-
-//Importar componentes (en orden lógico)
-@import 'header';
-@import 'banner';
-@import 'products';
-@import 'cart';
-

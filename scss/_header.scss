@@ -1,43 +1,23 @@
-// ===== HEADER COMPONENT =====
+@use "variables" as v;
+@use "sass:map";
+
 .header {
-  @extend %full-width;
-  @include flex-center(space-between);
-  padding: map-get($spacing, lg) map-get($spacing, xxxl);
-  background-color: map-get($colors, light-gray);
+  position: sticky;
+  top: 0;
+  z-index: map.get(v.$z-index, header);
+  background: map.get(v.$colors, white);
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 1.5rem;
+  box-shadow: 0 5px 20px map.get(v.$colors, shadow);
 
-  &__icon {
-    @extend %cursor-pointer;
-    width: 50px;
-    display: inline-block;
-
-    &--cart {
-      position: relative;
-      @include hover-transform();
-    }
-
-    &-image {
-      @extend %full-width;
-    }
+  &__icon-image {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
   }
 
   &__logo {
-    width: 100px;
-  }
-
-  // ===== RESPONSIVE =====
-  @include respond-to(tablet) {
-    padding: map-get($spacing, md) map-get($spacing, lg);
-
-    &__logo {
-      width: 80px;
-    }
-
-    &__icon {
-      width: 40px;
-    }
-  }
-
-  @include respond-to(mobile) {
-    padding: map-get($spacing, sm) map-get($spacing, md);
+    height: 40px;
   }
 }

@@ -1,44 +1,18 @@
-// ===== BANNER =====
+@use "variables" as v;
+@use "sass:map";
+
 .banner {
-  @extend %full-width, %text-center;
-  @include background-cover("../img/banner.jpg", 60%);
-  padding: map-get($spacing, xxl) 0;
-  color: map-get($colors, white);
+  background: linear-gradient(120deg, #000, #333);
+  color: map.get(v.$colors, white);
+  text-align: center;
+  padding: 3rem 1rem;
 
   &__title {
-    @extend %full-width;
-    font-size: map-get($fonts, size-xxxl);
-    font-weight: map-get($fonts, weight-semi-bold);
-    margin: map-get($spacing, sm);
+    font-size: 2rem;
+    font-weight: 700;
   }
 
   &__subtitle {
-    @extend %full-width;
-    margin: 0 auto;
-    font-size: map-get($fonts, size-xxl);
-    opacity: 0.7;
-  }
-
-  // ===== RESPONSIVE =====
-  @include respond-to(tablet) {
-    &__title {
-      font-size: map-get($fonts, size-xl);
-    }
-
-    &__subtitle {
-      font-size: 18px;
-    }
-  }
-
-  @include respond-to(mobile) {
-    padding: 30px 0;
-
-    &__title {
-      font-size: map-get($fonts, size-large);
-    }
-
-    &__subtitle {
-      font-size: 16px;
-    }
+    opacity: 0.85;
   }
 }
