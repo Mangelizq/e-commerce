@@ -1,0 +1,254 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.cart__title, .products__item, .banner {
+  text-align: center;
+}
+
+.cart__delete-icon-image, .cart__title, .banner__subtitle, .banner__title, .banner, .header__icon-image, .header, body {
+  width: 100%;
+}
+
+.cart__delete-icon, .products__item, .header__icon {
+  cursor: pointer;
+}
+
+.cart__item {
+  border-bottom: 1px solid #eee;
+}
+
+body {
+  font-family: "Lexend", Arial, Helvetica, sans-serif;
+  font-size: 15px;
+  font-weight: 300;
+  color: #999;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 50px;
+  background-color: #cecbcb;
+}
+.header__icon {
+  width: 50px;
+  display: inline-block;
+}
+.header__icon--cart {
+  position: relative;
+  transition: transform 0.2s ease;
+}
+.header__icon--cart:hover {
+  transform: scale(1.1) translateY(0);
+}
+.header__logo {
+  width: 100px;
+}
+@media (max-width: 768px) {
+  .header {
+    padding: 15px 20px;
+  }
+  .header__logo {
+    width: 80px;
+  }
+  .header__icon {
+    width: 40px;
+  }
+}
+@media (max-width: 480px) {
+  .header {
+    padding: 10px 15px;
+  }
+}
+
+.banner {
+  background-image: url("../img/banner.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position-y: 60%;
+  padding: 40px 0;
+  color: #fff;
+}
+.banner__title {
+  font-size: 30px;
+  font-weight: 600;
+  margin: 10px;
+}
+.banner__subtitle {
+  margin: 0 auto;
+  font-size: 25px;
+  opacity: 0.7;
+}
+@media (max-width: 768px) {
+  .banner__title {
+    font-size: 24px;
+  }
+  .banner__subtitle {
+    font-size: 18px;
+  }
+}
+@media (max-width: 480px) {
+  .banner {
+    padding: 30px 0;
+  }
+  .banner__title {
+    font-size: 20px;
+  }
+  .banner__subtitle {
+    font-size: 16px;
+  }
+}
+
+.products {
+  width: 80%;
+  margin: 0 auto;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+.products__item {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.products__item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+.products__item {
+  padding: 15px;
+}
+.products__image {
+  width: 200px;
+  margin-bottom: 15px;
+}
+.products__title {
+  font-size: 17px;
+  font-weight: 500;
+  margin-bottom: 5px;
+  color: #333;
+}
+.products__price {
+  font-size: 15px;
+  font-weight: 300;
+  color: #666;
+}
+@media (max-width: 768px) {
+  .products {
+    width: 95%;
+    padding: 15px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+  }
+  .products__image {
+    width: 150px;
+  }
+}
+@media (max-width: 480px) {
+  .products {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px;
+  }
+  .products__image {
+    width: 120px;
+  }
+  .products__price {
+    font-size: 14px;
+  }
+}
+
+.cart {
+  position: fixed;
+  top: 0;
+  right: -500px;
+  width: 500px;
+  height: 100vh;
+  z-index: 1000;
+  transition: right 0.3s ease;
+}
+.cart--visible {
+  right: 0;
+}
+.cart {
+  max-width: 90vw;
+  background-color: #fff;
+  padding: 25px;
+  box-shadow: -19px -1px 22px -15px rgba(0, 0, 0, 0.3);
+  overflow-y: auto;
+}
+.cart__title {
+  font-size: 20px;
+  font-weight: 600;
+  padding: 25px 0;
+  color: #333;
+  border-bottom: 2px solid #f0f0f0;
+  margin-bottom: 20px;
+}
+.cart__item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  transition: background-color 0.3s ease;
+}
+.cart__item:hover {
+  background-color: #f9f9f9;
+}
+.cart__item-image {
+  width: 60px;
+  border-radius: 5px;
+}
+.cart__item-name {
+  flex: 1;
+  margin: 0 15px;
+  font-weight: 400;
+  color: #333;
+}
+.cart__item-price {
+  font-weight: 500;
+  color: #333;
+  margin-right: 15px;
+}
+.cart__delete-icon {
+  width: 25px;
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
+}
+.cart__delete-icon:hover {
+  opacity: 1;
+}
+@media (max-width: 768px) {
+  .cart {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 100%;
+    height: 100vh;
+    z-index: 1000;
+    transition: right 0.3s ease;
+  }
+  .cart--visible {
+    right: 0;
+  }
+  .cart {
+    padding: 20px;
+  }
+  .cart__item {
+    padding: 12px;
+  }
+  .cart__item-image {
+    width: 50px;
+  }
+}
+
+/*# sourceMappingURL=main.css.map */

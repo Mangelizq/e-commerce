@@ -1,0 +1,43 @@
+// ===== HEADER COMPONENT =====
+.header {
+  @extend %full-width;
+  @include flex-center(space-between);
+  padding: map-get($spacing, lg) map-get($spacing, xxxl);
+  background-color: map-get($colors, light-gray);
+
+  &__icon {
+    @extend %cursor-pointer;
+    width: 50px;
+    display: inline-block;
+
+    &--cart {
+      position: relative;
+      @include hover-transform();
+    }
+
+    &-image {
+      @extend %full-width;
+    }
+  }
+
+  &__logo {
+    width: 100px;
+  }
+
+  // ===== RESPONSIVE =====
+  @include respond-to(tablet) {
+    padding: map-get($spacing, md) map-get($spacing, lg);
+
+    &__logo {
+      width: 80px;
+    }
+
+    &__icon {
+      width: 40px;
+    }
+  }
+
+  @include respond-to(mobile) {
+    padding: map-get($spacing, sm) map-get($spacing, md);
+  }
+}

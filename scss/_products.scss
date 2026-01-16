@@ -1,0 +1,58 @@
+// ===== PRODUCTS COMPONENT =====
+.products {
+  width: 80%;
+  margin: 0 auto;
+  padding: map-get($spacing, lg);
+  @include responsive-grid(250px);
+
+  &__item {
+    @extend %cursor-pointer, %text-center;
+    @include card-hover;
+    padding: map-get($spacing, md);
+  }
+
+  &__image {
+    width: 200px;
+    margin-bottom: map-get($spacing, md);
+  }
+
+  &__title {
+    font-size: map-get($fonts, size-medium);
+    font-weight: map-get($fonts, weight-medium);
+    margin-bottom: map-get($spacing, xs);
+    color: map-get($colors, primary);
+  }
+
+  &__price {
+    font-size: map-get($fonts, size-base);
+    font-weight: map-get($fonts, weight-light);
+    color: map-get($colors, tertiary);
+  }
+
+  // ===== RESPONSIVE =====
+  @include respond-to(tablet) {
+    width: 95%;
+    padding: map-get($spacing, md);
+    @include responsive-grid(200px, map-get($spacing, md));
+
+    &__image {
+      width: 150px;
+    }
+  }
+
+  @include respond-to(mobile) {
+    @include responsive-grid(150px, map-get($spacing, sm));
+
+    &__image {
+      width: 120px;
+    }
+
+    &__title {
+      font-size: map-get($fonts, size-md);
+    }
+
+    &__price {
+      font-size: map-get($fonts, size-small);
+    }
+  }
+}

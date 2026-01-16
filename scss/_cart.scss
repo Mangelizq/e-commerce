@@ -1,0 +1,77 @@
+// ===== CART COMPONENT =====
+.cart {
+  @include fixed-sidebar(500px);
+  max-width: 90vw;
+  background-color: map-get($colors, white);
+  padding: map-get($spacing, xl);
+  box-shadow: -19px -1px 22px -15px map-get($colors, dark-shadow);
+  overflow-y: auto;
+
+  &__title {
+    @extend %full-width, %text-center;
+    font-size: map-get($fonts, size-large);
+    font-weight: map-get($fonts, weight-semi-bold);
+    padding: map-get($spacing, xl) 0;
+    color: map-get($colors, primary);
+    border-bottom: 2px solid map-get($colors, border-light);
+    margin-bottom: map-get($spacing, lg);
+  }
+
+  &__item {
+    @include flex-center(space-between);
+    padding: map-get($spacing, md);
+    @extend %border-bottom-light;
+    transition: background-color map-get($transitions, normal);
+
+    &:hover {
+      background-color: map-get($colors, hover-bg);
+    }
+  }
+
+  &__item-image {
+    width: 60px;
+    border-radius: 5px;
+  }
+
+  &__item-name {
+    flex: 1;
+    margin: 0 map-get($spacing, md);
+    font-weight: map-get($fonts, weight-normal);
+    color: map-get($colors, primary);
+  }
+
+  &__item-price {
+    font-weight: map-get($fonts, weight-medium);
+    color: map-get($colors, primary);
+    margin-right: map-get($spacing, md);
+  }
+
+  &__delete-icon {
+    @extend %cursor-pointer;
+    width: 25px;
+    opacity: 0.6;
+    transition: opacity map-get($transitions, normal);
+
+    &:hover {
+      opacity: 1;
+    }
+
+    &-image {
+      @extend %full-width;
+    }
+  }
+
+  // ===== RESPONSIVE =====
+  @include respond-to(tablet) {
+    @include fixed-sidebar(100%);
+    padding: map-get($spacing, lg);
+
+    &__item {
+      padding: 12px;
+    }
+
+    &__item-image {
+      width: 50px;
+    }
+  }
+}

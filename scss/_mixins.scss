@@ -1,0 +1,92 @@
+// ===== LAYOUT MIXINS =====
+@mixin flex-center($justify: center, $align: center) {
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
+}
+
+@mixin responsive-grid($min-width, $gap: map-get($spacing, lg)) {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax($min-width, 1fr));
+  gap: $gap;
+}
+
+// ===== ANIMATION MIXINS =====
+@mixin hover-transform($scale: 1.1, $translateY: 0) {
+  transition: transform map-get($transitions, fast);
+  
+  &:hover {
+    transform: scale($scale) translateY($translateY);
+  }
+}
+
+@mixin card-hover {
+  transition: transform map-get($transitions, normal), box-shadow map-get($transitions, normal);
+  
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px map-get($colors, shadow);
+  }
+}
+
+// ===== POSITIONING MIXINS =====
+@mixin fixed-sidebar($width, $direction: right) {
+  position: fixed;
+  top: 0;
+  #{$direction}: -$width;
+  width: $width;
+  height: 100vh;
+  z-index: map-get($z-index, sidebar);
+  transition: #{$direction} map-get($transitions, normal);
+  
+  &--visible {
+    #{$direction}: 0;
+  }
+}
+
+// ===== BACKGROUND MIXINS =====
+@mixin background-cover($image-path, $position-y: center) {
+  background-image: url($image-path);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position-y: $position-y;
+}
+
+// ===== RESPONSIVE MIXINS =====
+@mixin respond-to($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    @media (max-width: map-get($breakpoints, $breakpoint)) {
+      @content;
+    }
+  } @else {
+    @warn "No se encontró el breakpoint `#{$breakpoint}` en $breakpoints.";
+  }
+}
+
+// ===== PLACEHOLDERS =====
+%reset-box {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+%image-responsive {
+  max-width: 100%;
+  height: auto;
+}
+
+%text-center {
+  text-align: center;
+}
+
+%full-width {
+  width: 100%;
+}
+
+%cursor-pointer {
+  cursor: pointer;
+}
+
+%border-bottom-light {
+  border-bottom: 1px solid map-get($colors, border-gray);
+}
