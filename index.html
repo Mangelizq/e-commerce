@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
@@ -7,8 +7,30 @@
     <title>E-commerse</title>
   </head>
   <body>
+    <!-- Overlay para el menú -->
+    <div class="menu-overlay" id="menu-overlay"></div>
+
+    <!-- Menú Lateral -->
+    <nav class="menu" id="menu">
+      <button class="menu__close" id="menu-close">✕</button>
+      <h2 class="menu__title">Menú</h2>
+      <a href="#" class="menu__link">Inicio</a>
+      <a href="#" class="menu__link">Productos</a>
+      <a href="#" class="menu__link">Categorías</a>
+      <a href="#" class="menu__link">Sobre Nosotros</a>
+      <a href="#" class="menu__link">Contacto</a>
+    </nav>
+
+    <!-- Modal de Zoom -->
+    <div class="modal-zoom" id="modal-zoom">
+      <div class="modal-zoom__content">
+        <button class="modal-zoom__close" id="modal-close">✕</button>
+        <img src="" alt="" class="modal-zoom__image" id="modal-image" />
+      </div>
+    </div>
+
     <header class="header">
-      <i class="header__icon">
+      <i class="header__icon" id="menu-toggle">
         <img src="img/menu.png" alt="Icono Menu" class="header__icon-image" />
       </i>
       <img src="img/logo.webp" alt="Logo Adidas" class="header__logo" />
@@ -18,12 +40,21 @@
           alt="Icono Carrito"
           class="header__icon-image"
         />
+        <span class="header__badge" id="cart-badge">0</span>
       </i>
     </header>
     <main class="main">
       <section class="banner">
         <h2 class="banner__title">Productos Nuevos</h2>
         <p class="banner__subtitle">Conoce nuestros productos nuevos</p>
+      </section>
+      <section class="products-search">
+        <input
+          type="text"
+          id="search"
+          class="products-search__input"
+          placeholder="Buscar productos..."
+        />
       </section>
       <section class="products">
         <article class="products__item">
@@ -34,6 +65,14 @@
           />
           <h3 class="products__title">Jersey Real Madrid</h3>
           <p class="products__price">$1,000.00</p>
+          <button
+            class="products__button"
+            data-name="Jersey Real Madrid"
+            data-price="1000"
+            data-image="img/jersey.png"
+          >
+            Agregar al carrito
+          </button>
         </article>
         <article class="products__item">
           <img
@@ -43,11 +82,27 @@
           />
           <h3 class="products__title">Chamarra Adidas Special</h3>
           <p class="products__price">$2,000.00</p>
+          <button
+            class="products__button"
+            data-name="Chamarra Adidas Special"
+            data-price="2000"
+            data-image="img/chamarra.png"
+          >
+            Agregar al carrito
+          </button>
         </article>
         <article class="products__item">
           <img src="img/tenis.png" alt="tenis adidas" class="products__image" />
           <h3 class="products__title">AdidasLG2</h3>
           <p class="products__price">$2,300.00</p>
+          <button
+            class="products__button"
+            data-name="AdidasLG2"
+            data-price="2300"
+            data-image="img/tenis.png"
+          >
+            Agregar al carrito
+          </button>
         </article>
         <article class="products__item">
           <img
@@ -57,6 +112,14 @@
           />
           <h3 class="products__title">Jersey Real Madrid</h3>
           <p class="products__price">$1,000.00</p>
+          <button
+            class="products__button"
+            data-name="Jersey Real Madrid"
+            data-price="1000"
+            data-image="img/jersey.png"
+          >
+            Agregar al carrito
+          </button>
         </article>
         <article class="products__item">
           <img
@@ -66,11 +129,27 @@
           />
           <h3 class="products__title">Chamarra Adidas Special</h3>
           <p class="products__price">$2,000.00</p>
+          <button
+            class="products__button"
+            data-name="Chamarra Adidas Special"
+            data-price="2000"
+            data-image="img/chamarra.png"
+          >
+            Agregar al carrito
+          </button>
         </article>
         <article class="products__item">
           <img src="img/tenis.png" alt="tenis adidas" class="products__image" />
           <h3 class="products__title">AdidasLG2</h3>
           <p class="products__price">$2,300.00</p>
+          <button
+            class="products__button"
+            data-name="AdidasLG2"
+            data-price="2300"
+            data-image="img/tenis.png"
+          >
+            Agregar al carrito
+          </button>
         </article>
         <article class="products__item">
           <img
@@ -80,6 +159,14 @@
           />
           <h3 class="products__title">Jersey Real Madrid</h3>
           <p class="products__price">$1,000.00</p>
+          <button
+            class="products__button"
+            data-name="Jersey Real Madrid"
+            data-price="1000"
+            data-image="img/jersey.png"
+          >
+            Agregar al carrito
+          </button>
         </article>
         <article class="products__item">
           <img
@@ -89,57 +176,322 @@
           />
           <h3 class="products__title">Chamarra Adidas Special</h3>
           <p class="products__price">$2,000.00</p>
+          <button
+            class="products__button"
+            data-name="Chamarra Adidas Special"
+            data-price="2000"
+            data-image="img/chamarra.png"
+          >
+            Agregar al carrito
+          </button>
         </article>
       </section>
       <aside class="cart" id="cart">
-        <h2 class="cart__title">CARRITO</h2>
-        <div class="cart__item">
-          <img
-            src="img/chamarra2.png"
-            alt="Chamarra"
-            class="cart__item-image"
-          />
-          <p class="cart__item-name">Chamarra</p>
-          <p class="cart__item-price">$1,700.00</p>
-          <i class="cart__delete-icon">
-            <img
-              src="img/carrito.png"
-              alt="Eliminar producto"
-              class="cart__delete-icon-image"
-            />
-          </i>
+        <h2 class="cart__title">MI CARRITO</h2>
+        <div class="cart__content" id="cart-content">
+          <p class="cart__empty">Tu carrito está vacío</p>
+        </div>
+        <div class="cart__footer">
+          <div class="cart__total">
+            <span>Total:</span>
+            <span id="cart-total">$0.00</span>
+          </div>
+
+          <button class="cart__clear" id="clear-cart">Vaciar carrito</button>
+
+          <button class="cart__checkout">Proceder al Pago</button>
         </div>
       </aside>
     </main>
   </body>
   <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const cartToggle = document.getElementById("cart-toggle");
-      const cart = document.getElementById("cart");
+    // Variables principales
+    let cartItems = [];
 
-      cartToggle.addEventListener("click", function (event) {
+    const savedCart = localStorage.getItem("cart");
+
+    if (savedCart) {
+      cartItems = JSON.parse(savedCart);
+    }
+
+    // Elementos del DOM
+    const menuToggle = document.getElementById("menu-toggle");
+    const menu = document.getElementById("menu");
+    const menuClose = document.getElementById("menu-close");
+    const menuOverlay = document.getElementById("menu-overlay");
+    const cartToggle = document.getElementById("cart-toggle");
+    const cart = document.getElementById("cart");
+    const cartBadge = document.getElementById("cart-badge");
+    const cartContent = document.getElementById("cart-content");
+    const cartTotal = document.getElementById("cart-total");
+    const checkoutButton = document.querySelector(".cart__checkout");
+
+    checkoutButton.addEventListener("click", () => {
+      if (cartItems.length === 0) {
+        alert("Tu carrito está vacío.");
+
+        return;
+      }
+
+      alert("¡Gracias por tu compra!");
+
+      cartItems = [];
+
+      cartContent.innerHTML =
+        '<p class="cart__empty">Tu carrito está vacío</p>';
+
+      updateCartDisplay();
+    });
+    const addToCartButtons = document.querySelectorAll(".products__button");
+    const productImages = document.querySelectorAll(".products__image");
+    const modalZoom = document.getElementById("modal-zoom");
+    const modalImage = document.getElementById("modal-image");
+    const modalClose = document.getElementById("modal-close");
+
+    // ===== MENÚ LATERAL =====
+    menuToggle.addEventListener("click", function (event) {
+      event.preventDefault();
+      event.stopPropagation();
+      menu.classList.toggle("menu--visible");
+      menuOverlay.classList.toggle("menu-overlay--visible");
+      cart.classList.remove("cart--visible");
+    });
+
+    menuClose.addEventListener("click", function (event) {
+      event.preventDefault();
+      event.stopPropagation();
+      menu.classList.remove("menu--visible");
+      menuOverlay.classList.remove("menu-overlay--visible");
+    });
+
+    // Cerrar menú al hacer click en el overlay
+    menuOverlay.addEventListener("click", function (event) {
+      event.preventDefault();
+      event.stopPropagation();
+      menu.classList.remove("menu--visible");
+      menuOverlay.classList.remove("menu-overlay--visible");
+    });
+
+    // Cerrar menú al hacer click en un link
+    const menuLinks = document.querySelectorAll(".menu__link");
+    menuLinks.forEach((link) => {
+      link.addEventListener("click", function (event) {
         event.preventDefault();
-        event.stopPropagation();
-        cart.classList.toggle("cart--visible");
+        menu.classList.remove("menu--visible");
+        menuOverlay.classList.remove("menu-overlay--visible");
+      });
+    });
+
+    document.addEventListener("click", function (event) {
+      const isClickInsideMenu = menu.contains(event.target);
+      const isClickOnToggle = menuToggle.contains(event.target);
+
+      if (
+        !isClickInsideMenu &&
+        !isClickOnToggle &&
+        menu.classList.contains("menu--visible")
+      ) {
+        menu.classList.remove("menu--visible");
+        menuOverlay.classList.remove("menu-overlay--visible");
+      }
+    });
+
+    // ===== CARRITO =====
+    cartToggle.addEventListener("click", function (event) {
+      event.preventDefault();
+      event.stopPropagation();
+      cart.classList.toggle("cart--visible");
+      menu.classList.remove("menu--visible");
+    });
+
+    document.addEventListener("click", function (event) {
+      const isClickInsideCart = cart.contains(event.target);
+      const isClickOnToggle = cartToggle.contains(event.target);
+
+      if (
+        !isClickInsideCart &&
+        !isClickOnToggle &&
+        cart.classList.contains("cart--visible")
+      ) {
+        cart.classList.remove("cart--visible");
+      }
+    });
+
+    cart.addEventListener("click", function (event) {
+      event.stopPropagation();
+    });
+
+    // ===== AGREGAR AL CARRITO =====
+    function addToCart(name, price, image, button) {
+      // Agregar item al array
+      cartItems.push({ name, price, image, id: Date.now() });
+
+      // Crear elemento del item
+      const cartItem = document.createElement("div");
+      cartItem.className = "cart__item";
+      cartItem.dataset.id = Date.now();
+      cartItem.innerHTML = `
+            <img src="${image}" alt="${name}" class="cart__item-image" />
+            <div class="cart__item-info">
+              <p class="cart__item-name">${name}</p>
+              <p class="cart__item-price">$${price.toLocaleString("es-MX")}</p>
+            </div>
+            <button class="cart__delete-button">✕</button>
+          `;
+
+      const deleteButton = cartItem.querySelector(".cart__delete-button");
+      deleteButton.addEventListener("click", function (e) {
+        e.stopPropagation();
+        const id = parseInt(cartItem.dataset.id);
+        cartItems = cartItems.filter((item) => item.id !== id);
+        cartItem.remove();
+        updateCartDisplay();
       });
 
-      document.addEventListener("click", function (event) {
-        if (!cart || !cartToggle) return;
+      cartContent.appendChild(cartItem);
+      updateCartDisplay();
 
-        const isClickInsideCart = cart.contains(event.target);
-        const isClickOnToggle = cartToggle.contains(event.target);
+      // Feedback visual
+      const originalText = button.textContent;
+      button.textContent = "¡Agregado!";
+      button.style.backgroundColor = "#28a745";
+      setTimeout(() => {
+        button.textContent = originalText;
+        button.style.backgroundColor = "";
+      }, 1500);
+    }
 
-        if (
-          !isClickInsideCart &&
-          !isClickOnToggle &&
-          cart.classList.contains("cart--visible")
-        ) {
-          cart.classList.remove("cart--visible");
-        }
+    function updateCartDisplay() {
+      const itemCount = cartItems.length;
+      cartBadge.textContent = itemCount;
+      cartBadge.style.display = itemCount > 0 ? "flex" : "none";
+
+      // Actualizar total
+      const total = cartItems.reduce((sum, item) => sum + item.price, 0);
+      cartTotal.textContent = `$${total.toLocaleString("es-MX")}`;
+
+      // Mostrar/ocultar mensaje vacío
+      const cartItems_elements = cartContent.querySelectorAll(".cart__item");
+      if (cartItems_elements.length === 0) {
+        cartContent.innerHTML =
+          '<p class="cart__empty">Tu carrito está vacío</p>';
+      }
+      localStorage.setItem("cart", JSON.stringify(cartItems));
+    }
+
+    function updateCartBadge() {
+      updateCartDisplay();
+    }
+
+    addToCartButtons.forEach((button) => {
+      button.addEventListener("click", function (event) {
+        event.preventDefault();
+        const name = this.dataset.name;
+        const price = parseFloat(this.dataset.price);
+        const image = this.dataset.image;
+        addToCart(name, price, image, this);
       });
+    });
 
-      cart.addEventListener("click", function (event) {
-        event.stopPropagation();
+    // ===== ZOOM MODAL =====
+    productImages.forEach((image) => {
+      image.addEventListener("click", function () {
+        const src = this.src;
+        const alt = this.alt;
+        modalImage.src = src;
+        modalImage.alt = alt;
+        modalZoom.classList.add("modal-zoom--visible");
+        document.body.style.overflow = "hidden";
+      });
+    });
+
+    modalClose.addEventListener("click", function () {
+      modalZoom.classList.remove("modal-zoom--visible");
+      document.body.style.overflow = "auto";
+    });
+
+    modalZoom.addEventListener("click", function (event) {
+      if (event.target === this) {
+        modalZoom.classList.remove("modal-zoom--visible");
+        document.body.style.overflow = "auto";
+      }
+    });
+
+    // Cerrar modal con tecla ESC
+    document.addEventListener("keydown", function (event) {
+      if (event.key === "Escape") {
+        modalZoom.classList.remove("modal-zoom--visible");
+        document.body.style.overflow = "auto";
+      }
+    });
+
+    cartItems.forEach((item) => {
+      const cartItem = document.createElement("div");
+
+      cartItem.className = "cart__item";
+
+      cartItem.dataset.id = item.id;
+
+      cartItem.innerHTML = `
+
+            <img
+                src="${item.image}"
+                class="cart__item-image">
+
+            <div class="cart__item-info">
+
+                <p class="cart__item-name">
+                    ${item.name}
+                </p>
+
+                <p class="cart__item-price">
+                    $${item.price.toLocaleString("es-MX")}
+                </p>
+
+            </div>
+
+            <button class="cart__delete-button">
+                ✕
+            </button>
+
+        `;
+
+      cartItem
+        .querySelector(".cart__delete-button")
+        .addEventListener("click", () => {
+          cartItems = cartItems.filter((p) => p.id != item.id);
+
+          cartItem.remove();
+
+          updateCartDisplay();
+        });
+
+      cartContent.appendChild(cartItem);
+    });
+
+    document.getElementById("clear-cart").addEventListener("click", () => {
+      cartItems = [];
+
+      cartContent.innerHTML =
+        '<p class="cart__empty">Tu carrito está vacío</p>';
+
+      updateCartDisplay();
+    });
+
+    // Inicializar
+    updateCartBadge();
+
+    const search = document.getElementById("search");
+
+    search.addEventListener("input", () => {
+      const value = search.value.toLowerCase();
+
+      document.querySelectorAll(".products__item").forEach((product) => {
+        const title = product
+          .querySelector(".products__title")
+          .textContent.toLowerCase();
+
+        product.style.display = title.includes(value) ? "flex" : "none";
       });
     });
   </script>

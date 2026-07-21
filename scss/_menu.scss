@@ -1,0 +1,86 @@
+@use "variables" as v;
+@use "sass:map";
+
+.menu {
+  position: fixed;
+  top: 0;
+  left: -100%;
+  width: 280px;
+  height: 100vh;
+  background: map.get(v.$colors, white);
+  padding: 1rem;
+  transition: left 0.3s ease;
+  z-index: 1000;
+  box-shadow: 2px 0 15px map.get(v.$colors, dark-shadow);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+
+  &--visible {
+    left: 0;
+  }
+
+  &__close {
+    align-self: flex-end;
+    background: none;
+    border: none;
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: map.get(v.$colors, primary);
+    transition: color 0.2s ease, transform 0.2s ease;
+    padding: 0.5rem;
+    margin-bottom: 1.5rem;
+    line-height: 1;
+
+    &:hover {
+      color: map.get(v.$colors, accent);
+      transform: rotate(90deg);
+    }
+  }
+
+  &__title {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: map.get(v.$colors, primary);
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid map.get(v.$colors, accent);
+  }
+
+  &__link {
+    display: block;
+    padding: 1rem 0;
+    text-decoration: none;
+    color: map.get(v.$colors, primary);
+    transition: all 0.2s ease;
+    font-weight: 500;
+    border-left: 3px solid transparent;
+    padding-left: 1rem;
+
+    &:hover {
+      color: map.get(v.$colors, accent);
+      background-color: map.get(v.$colors, hover-bg);
+      border-left-color: map.get(v.$colors, accent);
+      transform: translateX(5px);
+    }
+  }
+}
+
+// Overlay para el menú
+.menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+
+  &--visible {
+    opacity: 1;
+    visibility: visible;
+  }
+}
