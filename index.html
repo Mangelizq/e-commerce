@@ -187,7 +187,11 @@
         </article>
       </section>
       <aside class="cart" id="cart">
-        <h2 class="cart__title">MI CARRITO</h2>
+        <div class="cart__header">
+          <h2 class="cart__title">MI CARRITO</h2>
+
+          <button class="cart__close" id="cart-close">✕</button>
+        </div>
         <div class="cart__content" id="cart-content">
           <p class="cart__empty">Tu carrito está vacío</p>
         </div>
@@ -221,6 +225,7 @@
     const menuOverlay = document.getElementById("menu-overlay");
     const cartToggle = document.getElementById("cart-toggle");
     const cart = document.getElementById("cart");
+    const cartClose = document.getElementById("cart-close");
     const cartBadge = document.getElementById("cart-badge");
     const cartContent = document.getElementById("cart-content");
     const cartTotal = document.getElementById("cart-total");
@@ -302,6 +307,10 @@
       event.stopPropagation();
       cart.classList.toggle("cart--visible");
       menu.classList.remove("menu--visible");
+    });
+
+    cartClose.addEventListener("click", function () {
+      cart.classList.remove("cart--visible");
     });
 
     document.addEventListener("click", function (event) {
